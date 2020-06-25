@@ -5,7 +5,7 @@ const Player = props => {
     
     return (
         <>
-        <h1>Player:<em> {props.data[randomIndex]} </em></h1>
+        <h1>Player:<em> {props.data[randomIndex]}</em></h1>
         </>
     )
 }

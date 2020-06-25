@@ -1,34 +1,69 @@
-import React from 'react'
-import Player from './Player'
-import Deck from './Deck'
-import { getPlayers } from '../api'
+import React from "react"
+import Deck from "./Deck"
+import { getPlayers } from "../api"
+
+let randomIndex = Math.floor(Math.random() * 14)
 
 class App extends React.Component {
-  
   state = {
-    players: []
+    players: [],
+  }
+
+  randomPlayer = () => {
+    getPlayers().then((player) => {
+      console.log(player)
+      this.setState({
+        players: player[randomIndex],
+      })
+    })
   }
 
   componentDidMount() {
-    getPlayers()
-      .then(player => {
-        console.log(player)
-        this.setState({
-          players: player,
-        })
-      })
+    console.log("component did mount")
+    this.randomPlayer()
   }
 
-  render () {
+  render() {
+    console.log("render")
     return (
       <div>
-        <h1>You're the L.O.T.P!</h1>
+        <header className="header">
+          <h1>
+            <span className="red">Red</span>
+            <span className="small"> or </span>
+            <span className="black">Black</span>
+          </h1>
+        </header>
+
+        <div className="forest-green">
+          <input
+            className="button-player"
+            onClick={this.handleClick}
+            type="submit"
+            value="Player:"
+          />
+        <p>
+          <em> {this.state.players.player} </em>
+        </p>
+        </div>
+
         <Deck />
-        {/* <Player key={this.state.players.id} data={this.state.players}/> */}
+        
+        <div className="forest-green player-prompts" >
+          <h3>Choose!</h3>
+          <p>Instructions go here</p>
+          <div className="container">
+            <input className="button-player options" type="text" value="Red"/>
+              <p>or</p>
+            <input className="button-player options" type="text" value="Black"/>
+          </div>
+
+        </div>
+
       </div>
     )
   }
 }
 
-
 export default App
+

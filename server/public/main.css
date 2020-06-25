@@ -6,23 +6,147 @@
 */
 
 body {
-  font-family: 'Montserrat', sans-serif;
-  margin:0;
-}
-
-.button-div {
-  background-color: #235f24;
-  height: 100px;
-  width:100px;
+  font-family: "Montserrat", sans-serif;
   color: whitesmoke;
-  margin:0;
-}
-
-.wrap {
-  width: 900px;
-  height: 1224px;
-  margin:0;
+  height: auto;
+  min-height: 100%;
+  width: auto;
+  min-width: 100%;
+  margin: 0px auto;
+  padding: 0px auto;
   z-index: -10;
   position: absolute;
-  background-image: linear-gradient(to left bottom, #007e52, #09804d, #148248, #1d8343, #25853d, #25853d, #25853d, #25853d, #1d8343, #148248, #09804d, #007e52);
+  background-image: linear-gradient(
+    to left bottom,
+    #007e52,
+    #09804d,
+    #148248,
+    #1d8343,
+    #25853d,
+    #25853d,
+    #25853d,
+    #25853d,
+    #1d8343,
+    #148248,
+    #09804d,
+    #007e52
+  );
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0px auto;
+  padding: 0px auto;
+}
+
+.forest-green {
+  background-color: #235f24;
+  height: auto;
+  width: 35%;
+  margin: 0 auto 0 auto;
+  border-radius: 25px;
+  padding: 1%;
+}
+
+/* Header and styles */
+
+.header {
+  background-color: #235f24;
+  height: auto;
+  width: 55%;
+  border-radius: 25px;
+  margin: 0 auto 0 auto;
+  text-align: center;
+  font-size: large;
+}
+
+span {
+  font-size: 2em;
+}
+
+.red {
+  color: red;
+}
+
+.black {
+  color: black;
+}
+
+.small {
+  font-size: xx-large;
+}
+
+/* Player display */
+
+.button-player {
+  background: #00656d;
+  background-image: -webkit-linear-gradient(top, #00656d, #2f4858);
+  background-image: -moz-linear-gradient(top, #00656d, #2f4858);
+  background-image: -ms-linear-gradient(top, #00656d, #2f4858);
+  background-image: -o-linear-gradient(top, #00656d, #2f4858);
+  background-image: linear-gradient(to bottom, #00656d, #2f4858);
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 400;
+  padding: 10px;
+  border: solid #308734 1px;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+}
+
+.button-player:hover {
+  border: solid #308734 1px;
+  background: #2f4858;
+  background-image: -webkit-linear-gradient(top, #2f4858, #065668);
+  background-image: -moz-linear-gradient(top, #2f4858, #065668);
+  background-image: -ms-linear-gradient(top, #2f4858, #065668);
+  background-image: -o-linear-gradient(top, #2f4858, #065668);
+  background-image: linear-gradient(to bottom, #2f4858, #065668);
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  text-decoration: none;
+}
+
+/* Playing cards */
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+  background-color: #235f24;
+  height: auto;
+  width: 90%;
+  margin: 2% auto 2% auto;
+  border-radius: 25px;
+  line-height: 2em;
+}
+
+.card {
+  margin: 3% 0% 2% 0%;
+  text-align: center;
+}
+
+/* Player Prompts */
+
+.player-prompts {
+  text-align: center;
+  width: 50%;
+}
+
+.container input {
+  margin: 0 3%;
+}
+
+.options {
+  padding: 0;
+  width: 120px;
 }
