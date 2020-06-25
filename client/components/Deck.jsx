@@ -92,7 +92,8 @@ class Deck extends React.Component {
 
         <div className="forest-green player-prompts">
           <h3>Choose!</h3>
-          <p>Instructions go here</p>
+
+        {/* Red or black options */}
           <div className="container">
             <button
               className="button-player options"
@@ -105,6 +106,35 @@ class Deck extends React.Component {
               Black
             </button>
           </div>
+
+            {/* Higher or Lower options */}
+            <div className="container">
+            <button
+              className="button-player options"
+              onClick={this.handleClick}
+            >
+              Higher
+            </button>
+            <p>or</p>
+            <button className="button-player option" onClick={this.handleClick}>
+              Lower
+            </button>
+          </div>
+
+            {/* Inside or Outside options */}
+            <div className="container">
+            <button
+              className="button-player options"
+              onClick={this.handleClick}
+            >
+              Inside
+            </button>
+            <p>or</p>
+            <button className="button-player option" onClick={this.handleClick}>
+              Outside
+            </button>
+          </div>
+
         </div>
       </>
     )
