@@ -27,7 +27,21 @@ class Deck extends React.Component {
 
   render() {
     return (
-      <div>hello</div>
+      
+        <div className="container" >
+          <div className="card">
+            <img src="https://deckofcardsapi.com/static/img/KH.png" alt=""/>
+          </div>
+
+          <div className="card">
+            <img src="https://deckofcardsapi.com/static/img/KH.png" alt=""/>
+          </div>
+
+          <div className="card">
+            <img src="https://deckofcardsapi.com/static/img/KH.png" alt=""/>
+          </div>
+        </div>
+      
       
     )
   }
