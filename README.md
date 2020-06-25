@@ -1,28 +1,13 @@
-# A starter webpack project for React
+# Life of the Party
 
-This is a starter project that uses webpack to transpile and bundle ES6 React code. To use, consider these steps:
+## [Life of the Party](https://life-of-the-party.herokuapp.com/) is a simple drinking game.
 
-* Fork this repo
-* Rename your repo according to the app you're building
+You have up to three guesses to make:
 
-```sh
-git clone https://github.com/[your-account]/[your-app].git
-cd [your-app] && npm i
-```
+- One card is drawn face down. Is it red or black?
+- If you guess correctly, a second card is drawn face down. Is this card higher or lower than the first card?
+- If you guess correctly, a third card is drawn face down. Is that card inside or outside the two previous cards?
 
-To start the development server with a watcher that rebuilds your code, run `npm run dev`. The assets built by webpack are placed in `server/public`. This folder is defined as a static folder in an Express.js server that can be started with `npm run server`.
+If you guess any of these incorrectly, take a drink.
 
-Additional components should be placed in `client/components`.
-
-## Separate client/server
-
-The boilerplate is also set up to host the client using `webpack-dev-server` with hot module reloading etc. To use this method, in one terminal run:
-```sh
-npm run client
-```
-and in the other:
-```sh
-npm run server
-```
-The client will be available on http://localhost:8080 and the server on http://localhost:3000. Note that you will still need to manage CORS between the two, as they are on different ports.
-
+#### Enjoy!
