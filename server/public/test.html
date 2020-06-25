@@ -10,11 +10,37 @@
     <title>Test CSS Page</title>
   </head>
   <body>
-    <div class="wrap">
-      <div id="app"></div>
+    <div id="app"></div>
+    
+      <header class="header">
+        <h1>
+          <span class="red">Red</span><span class="small"> or </span
+          ><span class="black">Black</span>
+        </h1>
+      </header>
 
-      <div class="button-div">Div for button</div>
-    </div>
+      <form  class="forest-green" action="">
+        <input class="button-player" onClick={this.handleClick} type="submit" value="Player:" />
+      </form>
+
+      <div class="container" >
+        <div class="card"><img src="https://deckofcardsapi.com/static/img/KH.png" alt=""></div>
+        <div class="card"><img src="https://deckofcardsapi.com/static/img/KH.png" alt=""></div>
+        <div class="card"><img src="https://deckofcardsapi.com/static/img/KH.png" alt=""></div>
+      </div>
+
+      <div class="forest-green player-prompts" >
+        <h3>Choose!</h3>
+        <p>Instructions go here</p>
+        <div class="container">
+        <input class="button-player options" type="text" value="Red">
+        <p>or</p>
+        <input class="button-player options" type="text" value="Black">
+      </div>
+
+      </div>
+
+
     <script src="/bundle.js"></script>
   </body>
 </html>
