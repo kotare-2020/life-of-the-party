@@ -10,7 +10,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log('component did mount')
     getPlayers()
       .then(player => {
         console.log(player)
@@ -21,7 +20,6 @@ class App extends React.Component {
   }
 
   render () {
-    console.log('render')
     return (
       <div>
         <h1>You're the L.O.T.P!</h1>
