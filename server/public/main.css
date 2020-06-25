@@ -1,0 +1,28 @@
+/* Styles to complete:
+- Headers
+- Buttons
+- Divs
+- Etc
+*/
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin:0;
+}
+
+.button-div {
+  background-color: #235f24;
+  height: 100px;
+  width:100px;
+  color: whitesmoke;
+  margin:0;
+}
+
+.wrap {
+  width: 900px;
+  height: 1224px;
+  margin:0;
+  z-index: -10;
+  position: absolute;
+  background-image: linear-gradient(to left bottom, #007e52, #09804d, #148248, #1d8343, #25853d, #25853d, #25853d, #25853d, #1d8343, #148248, #09804d, #007e52);
+}
