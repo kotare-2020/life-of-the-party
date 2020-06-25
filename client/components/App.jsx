@@ -35,15 +35,10 @@ class App extends React.Component {
           </h1>
         </header>
 
-        <div className="forest-green">
-          <input
-            className="button-player"
-            onClick={this.handleClick}
-            type="submit"
-            value="Player:"
-          />
+        <div className="forest-green player-container">
+          <button className="button-player" onClick={this.handleClick}>Player</button>
         <p>
-          <em> {this.state.players.player} </em>
+          <em>{this.state.players.player}</em>
         </p>
         </div>
 
@@ -53,9 +48,13 @@ class App extends React.Component {
           <h3>Choose!</h3>
           <p>Instructions go here</p>
           <div className="container">
-            <input className="button-player options" type="text" value="Red"/>
+          <button className="button-player options" onClick={this.handleClick}>Red</button>
+
+            {/* <input className="button-player options" type="text" value="Red"/> */}
               <p>or</p>
-            <input className="button-player options" type="text" value="Black"/>
+          <button className="button-player option" onClick={this.handleClick}>Black</button>
+
+            {/* <input className="button-player options" type="text" value="Black"/> */}
           </div>
 
         </div>

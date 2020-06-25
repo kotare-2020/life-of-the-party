@@ -77,6 +77,18 @@ span {
   font-size: xx-large;
 }
 
+.player-container {
+  display:flex
+}
+
+.player-container input {
+  margin: 0 10%
+}
+
+.player-container p {
+  font-size: xx-large;
+}
+
 /* Player display */
 
 .button-player {
