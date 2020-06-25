@@ -7,7 +7,7 @@ class App extends React.Component {
     players: [],
   }
 
-  handleClick = e => {
+  handleClick = (e) => {
     this.randomPlayer()
   }
 
@@ -37,18 +37,23 @@ class App extends React.Component {
         </header>
 
         <div className="forest-green player-container">
-          <button className="button-player" onClick={this.handleClick}>Player</button>
-        <p>
-          <em>{this.state.players.player}</em>
-        </p>
+
+          <button className="button-player sticky" onClick={this.handleClick}>
+            Player
+          </button>
+
+          <div className="text" >
+            <p>
+              <em>{this.state.players.player}</em>
+            </p>
+          </div>
+
         </div>
 
         <Deck />
-
       </div>
     )
   }
 }
 
 export default App
-
