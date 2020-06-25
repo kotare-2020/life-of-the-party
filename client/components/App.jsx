@@ -9,6 +9,10 @@ class App extends React.Component {
     players: [],
   }
 
+  handleClick = e => {
+    this.randonPlayer()
+  }
+
   randomPlayer = () => {
     getPlayers().then((player) => {
       console.log(player)
@@ -20,7 +24,6 @@ class App extends React.Component {
 
   componentDidMount() {
     console.log("component did mount")
-    this.randomPlayer()
   }
 
   render() {
