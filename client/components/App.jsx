@@ -1,5 +1,6 @@
 import React from 'react'
 import Player from './Player'
+import { getPlayers } from '../api'
 
 class App extends React.Component {
   
@@ -9,8 +10,9 @@ class App extends React.Component {
 
   componentDidMount() {
     console.log('component did mount')
-    getWidgets()
+    getPlayers()
       .then(player => {
+        console.log(player)
         this.setState({
           players: player,
         })
@@ -21,8 +23,8 @@ class App extends React.Component {
     console.log('render')
     return (
       <div>
-        <h1>You're such a L.O.T.P!</h1>
-        <Player key={player.id} data={player}/>
+        <h1>You're the L.O.T.P!</h1>
+        <Player key={this.state.players.id} data={this.state.players}/>
       </div>
     )
   }
