@@ -2,8 +2,6 @@ import React from "react"
 import Deck from "./Deck"
 import { getPlayers } from "../api"
 
-let randomIndex = Math.floor(Math.random() * 14)
-
 class App extends React.Component {
   state = {
     players: [],
@@ -15,7 +13,7 @@ class App extends React.Component {
 
   randomPlayer = () => {
     getPlayers().then((player) => {
-      console.log(player)
+      let randomIndex = Math.floor(Math.random() * 14)
       this.setState({
         players: player[randomIndex],
       })
