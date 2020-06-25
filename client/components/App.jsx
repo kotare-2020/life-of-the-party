@@ -10,7 +10,7 @@ class App extends React.Component {
   }
 
   handleClick = e => {
-    this.randonPlayer()
+    this.randomPlayer()
   }
 
   randomPlayer = () => {
