@@ -1,4 +1,5 @@
 import React from 'react'
+import Deck from './Deck'
 import { getPlayers } from '../api'
 
 let randomIndex = Math.floor(Math.random()*14)
@@ -30,6 +31,7 @@ class App extends React.Component {
       <div>
         <h1>You're the L.O.T.P!</h1>
         <h1>Player:<em> {this.state.players.player} </em></h1>
+        <Deck />
       </div>
     )
   }
