@@ -35,6 +35,7 @@ class Deck extends React.Component {
             remainingCards: res.body.remaining,
           },
           () => {
+            //Currently this will draw 3 cards by default but we potentially wanna do something else
             this.draw3Cards()
           }
         )
@@ -54,6 +55,12 @@ class Deck extends React.Component {
           thirdCard: res.body.cards[2],
         })
       })
+  }
+
+  checkForEmptyDeck = () => {
+    if (this.state.remainingCards < 3) {
+      this.getDeck()
+    }
   }
 
   render() {
