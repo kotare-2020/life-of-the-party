@@ -1,5 +1,6 @@
 import React from 'react'
 import Player from './Player'
+import Deck from './Deck'
 import { getPlayers } from '../api'
 
 class App extends React.Component {
@@ -24,7 +25,8 @@ class App extends React.Component {
     return (
       <div>
         <h1>You're the L.O.T.P!</h1>
-        <Player key={this.state.players.id} data={this.state.players}/>
+        <Deck />
+        {/* <Player key={this.state.players.id} data={this.state.players}/> */}
       </div>
     )
   }
