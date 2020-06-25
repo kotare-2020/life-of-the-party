@@ -44,20 +44,17 @@ class App extends React.Component {
 
         <Deck />
         
-        <div className="forest-green player-prompts" >
+        {/* <div className="forest-green player-prompts" >
           <h3>Choose!</h3>
           <p>Instructions go here</p>
           <div className="container">
           <button className="button-player options" onClick={this.handleClick}>Red</button>
-
-            {/* <input className="button-player options" type="text" value="Red"/> */}
               <p>or</p>
           <button className="button-player option" onClick={this.handleClick}>Black</button>
 
-            {/* <input className="button-player options" type="text" value="Black"/> */}
           </div>
 
-        </div>
+        </div> */}
 
       </div>
     )
