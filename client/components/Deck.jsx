@@ -68,21 +68,21 @@ class Deck extends React.Component {
       <>
         <div className="container">
           <Card
-            className="card"
+            
             cardId="1"
             cardObject={this.state.firstCard}
             onClick={this.handleClick}
             firstCardVisible={this.state.firstCardVisible}
           />
           <Card
-            className="card"
+            
             cardId="2"
             cardObject={this.state.secondCard}
             onClick={this.handleClick}
             secondCardVisible={this.state.secondCardVisible}
           />
           <Card
-            className="card"
+            
             cardId="3"
             cardObject={this.state.thirdCard}
             onClick={this.handleClick}
@@ -102,7 +102,7 @@ class Deck extends React.Component {
               Red
             </button>
             <p>or</p>
-            <button className="button-player option" onClick={this.handleClick}>
+            <button className="button-player options" onClick={this.handleClick}>
               Black
             </button>
           </div>
@@ -116,7 +116,7 @@ class Deck extends React.Component {
               Higher
             </button>
             <p>or</p>
-            <button className="button-player option" onClick={this.handleClick}>
+            <button className="button-player options" onClick={this.handleClick}>
               Lower
             </button>
           </div>
@@ -130,7 +130,7 @@ class Deck extends React.Component {
               Inside
             </button>
             <p>or</p>
-            <button className="button-player option" onClick={this.handleClick}>
+            <button className="button-player options" onClick={this.handleClick}>
               Outside
             </button>
           </div>
