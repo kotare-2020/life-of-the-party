@@ -15,7 +15,7 @@
     "dev:client": "webpack --watch",
     "dev:server": "nodemon server",
     "start": "run-s build server",
-    "build": "webpack && knex migrate:latest",
+    "postinstall": "webpack && knex migrate:latest",
     "server": "node server",
     "test": "jest --watchAll"
   },
