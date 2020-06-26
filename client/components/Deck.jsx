@@ -11,9 +11,9 @@ class Deck extends React.Component {
     secondCard: {},
     thirdCard: {},
 
-    firstGuessCorrect: false,
-    secondGuessCorrect: false,
-    thirdGuessCorrect: false,
+    firstQuestionGuessed: false,
+    secondQuestionGuessed: false,
+    thirdQuestionGuessed: false,
 
     firstCardVisible: false,
     secondCardVisible: false,
@@ -23,6 +23,54 @@ class Deck extends React.Component {
   componentDidMount() {
     this.getDeck()
   }
+
+ handleClick = (event) =>{
+
+    event.preventDefault()
+
+    if(this.state.firstQuestionGuessed == false){
+
+      this.setState({
+        firstQuestionGuessed : true
+      })
+    }
+    
+
+    console.log(event.target.value);
+    
+
+  
+ 
+ }
+
+ getColours(cardObject){
+ 
+  const suit = cardObject.suit
+
+  switch (suit){
+
+    case "SPADES":
+    return "BLACK"
+    
+    
+    case "CLUBS":
+    return "BLACK"
+
+    case "HEARTS":
+    return "RED"
+
+    case "DIAMONDS":
+    return "RED"
+     
+
+  } 
+
+
+ 
+
+
+ }
+
 
   // Function will get a new deck from external API and replace deck object in state
   getDeck = () => {
@@ -52,7 +100,15 @@ class Deck extends React.Component {
           firstCard: res.body.cards[0],
           secondCard: res.body.cards[1],
           thirdCard: res.body.cards[2],
-        })
+        }, ()=>{
+          
+          this.state.firstCard.colour = this.getColours(this.state.firstCard)
+          this.state.secondCard.colour =this.getColours(this.state.secondCard)
+          this.state.thirdCard.colour = this.getColours(this.state.thirdCard)
+         
+  
+        } ) 
+        
       })
   }
 
@@ -64,21 +120,21 @@ class Deck extends React.Component {
             className="card"
             cardId="1"
             cardObject={this.state.firstCard}
-            onClick={this.handleClick}
+            // onClick={this.handleClick}
             firstCardVisible={this.state.firstCardVisible}
           />
           <Card
             className="card"
             cardId="2"
             cardObject={this.state.secondCard}
-            onClick={this.handleClick}
+            // onClick={this.handleClick}
             secondCardVisible={this.state.secondCardVisible}
           />
           <Card
             className="card"
             cardId="3"
             cardObject={this.state.thirdCard}
-            onClick={this.handleClick}
+            // onClick={this.handleClick}
             thirdCardVisible={this.state.thirdCardVisible}
           />
         </div>
@@ -87,14 +143,14 @@ class Deck extends React.Component {
           <h3>Choose!</h3>
           <p>Instructions go here</p>
           <div className="container">
-            <button
+            <button value ="RED"
               className="button-player options"
               onClick={this.handleClick}
             >
               Red
             </button>
             <p>or</p>
-            <button className="button-player option" onClick={this.handleClick}>
+            <button value = "BLACK" className="button-player option" onClick={this.handleClick}>
               Black
             </button>
           </div>
