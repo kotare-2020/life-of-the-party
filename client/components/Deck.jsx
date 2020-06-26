@@ -25,34 +25,23 @@ class Deck extends React.Component {
   }
 
  handleClick = (event) =>{
-
     event.preventDefault()
 
     if(this.state.firstQuestionGuessed == false){
-
       this.setState({
         firstQuestionGuessed : true
       })
     }
-    
-
     console.log(event.target.value);
-    
-
-  
- 
  }
 
  getColours(cardObject){
- 
   const suit = cardObject.suit
 
   switch (suit){
-
     case "SPADES":
     return "BLACK"
-    
-    
+      
     case "CLUBS":
     return "BLACK"
 
@@ -61,16 +50,12 @@ class Deck extends React.Component {
 
     case "DIAMONDS":
     return "RED"
-     
-
   } 
-
-
- 
-
-
  }
 
+ higherLower(cardObject) {
+  
+ }
 
   // Function will get a new deck from external API and replace deck object in state
   getDeck = () => {
@@ -101,15 +86,11 @@ class Deck extends React.Component {
           firstCard: res.body.cards[0],
           secondCard: res.body.cards[1],
           thirdCard: res.body.cards[2],
-        }, ()=>{
-          
+        }, () => {
           this.state.firstCard.colour = this.getColours(this.state.firstCard)
           this.state.secondCard.colour =this.getColours(this.state.secondCard)
           this.state.thirdCard.colour = this.getColours(this.state.thirdCard)
-         
-  
-        } ) 
-        
+        })   
       })
   }
 
@@ -124,21 +105,18 @@ class Deck extends React.Component {
       <>
         <div className="container">
           <Card
-            
             cardId="1"
             cardObject={this.state.firstCard}
             // onClick={this.handleClick}
             firstCardVisible={this.state.firstCardVisible}
           />
           <Card
-            
             cardId="2"
             cardObject={this.state.secondCard}
             // onClick={this.handleClick}
             secondCardVisible={this.state.secondCardVisible}
           />
           <Card
-            
             cardId="3"
             cardObject={this.state.thirdCard}
             // onClick={this.handleClick}
@@ -149,14 +127,12 @@ class Deck extends React.Component {
         <div className="forest-green player-prompts">
           <h3>Choose!</h3>
 
-        {/* Red or black options */}
+          {/* Red or black options */}
           <div className="container">
-            <button value ="RED"
-              className="button-player options"
-              onClick={this.handleClick}
-            >
+            <button value ="RED" className="button-player options" onClick={this.handleClick}>
               Red
             </button>
+
             <p>or</p>
 
             <button value = "BLACK" className="button-player option" onClick={this.handleClick}>
@@ -166,13 +142,12 @@ class Deck extends React.Component {
 
             {/* Higher or Lower options */}
             <div className="container">
-            <button
-              className="button-player options"
-              onClick={this.handleClick}
-            >
+            <button className="button-player options" onClick={this.handleClick}>
               Higher
             </button>
+
             <p>or</p>
+
             <button className="button-player options" onClick={this.handleClick}>
               Lower
             </button>
@@ -180,18 +155,16 @@ class Deck extends React.Component {
 
             {/* Inside or Outside options */}
             <div className="container">
-            <button
-              className="button-player options"
-              onClick={this.handleClick}
-            >
+            <button className="button-player options" onClick={this.handleClick}>
               Inside
             </button>
+
             <p>or</p>
+
             <button className="button-player options" onClick={this.handleClick}>
               Outside
             </button>
           </div>
-
         </div>
       </>
     )
