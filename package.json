@@ -42,7 +42,8 @@
     "pg": "^8.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "superagent": "^5.2.2"
+    "superagent": "^5.2.2",
+    "webpack": "^4.43.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",
@@ -58,7 +59,6 @@
     "jest": "^25.3.0",
     "nodemon": "^2.0.4",
     "sqlite3": "^4.2.0",
-    "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.0"
   },
