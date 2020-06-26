@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="main.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Test CSS Page</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    
+      <header class="header">
+        <h1>
+          <span class="red">Red</span><span class="small"> or </span
+          ><span class="black">Black</span>
+        </h1>
+      </header>
+
+      <form  class="forest-green" action="">
+        <input class="button-player" onClick={this.handleClick} type="submit" value="Player:" />
+      </form>
+
+      <div class="container" >
+        <div class="card"><img src="https://deckofcardsapi.com/static/img/KH.png" alt=""></div>
+        <div class="card"><img src="https://deckofcardsapi.com/static/img/KH.png" alt=""></div>
+        <div class="card"><img src="https://deckofcardsapi.com/static/img/KH.png" alt=""></div>
+      </div>
+
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="https://deckofcardsapi.com/static/img/KH.png" alt="">
+          </div>
+          <div class="flip-card-back">
+            <img src="https://deckofcardsapi.com/static/img/KH.png" alt="">
+          </div>
+        </div>
+      </div>
+
+      <div class="forest-green player-prompts" >
+        <h3>Choose!</h3>
+        <p>Instructions go here</p>
+        <div class="container">
+        <input class="button-player options" type="text" value="Red">
+        <p>or</p>
+        <input class="button-player options" type="text" value="Black">
+      </div>
+
+      </div>
+
+
+    <script src="/bundle.js"></script>
+  </body>
+</html>
