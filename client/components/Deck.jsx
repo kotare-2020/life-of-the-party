@@ -24,8 +24,31 @@ class Deck extends React.Component {
     this.getDeck()
   }
 
- handleClick = (event) =>{
+  handleClick = (event) => {
     event.preventDefault()
+    let buttonValue = event.target.value
+    let cardColour = this.state.firstCard.colour
+
+    if (this.state.firstQuestionGuessed == false) {
+      // Flip the card
+      if (buttonValue == cardColour) {
+        //Win condition
+        // Display thumbs up emoji
+        console.log("First guessed correctly")
+        this.setState({
+          firstQuestionGuessed: true
+        })
+      } else {
+        // Lose condition
+        console.log("First guessed incorrectly")
+        // Set firstQuestionGuessed to false, display drink emoji
+      }
+    } else if (this.state.secondQuestionGuessed == false) {
+      // Do the logic for second question here
+    } else if (this.state.thirdQuestionGuessed == false) {
+      // Do the logic for third question here
+    }
+  }
 
     if(this.state.firstQuestionGuessed == false){
       this.setState({
@@ -46,15 +69,11 @@ class Deck extends React.Component {
     return "BLACK"
 
     case "HEARTS":
-    return "RED"
+      return "RED"
 
     case "DIAMONDS":
-    return "RED"
+      return "RED"
   } 
- }
-
- higherLower(cardObject) {
-  
  }
 
   // Function will get a new deck from external API and replace deck object in state
@@ -88,7 +107,7 @@ class Deck extends React.Component {
           thirdCard: res.body.cards[2],
         }, () => {
           this.state.firstCard.colour = this.getColours(this.state.firstCard)
-          this.state.secondCard.colour =this.getColours(this.state.secondCard)
+          this.state.secondCard.colour = this.getColours(this.state.secondCard)
           this.state.thirdCard.colour = this.getColours(this.state.thirdCard)
         })   
       })
@@ -135,8 +154,8 @@ class Deck extends React.Component {
 
             <p>or</p>
 
-            <button value = "BLACK" className="button-player option" onClick={this.handleClick}>
-             Black
+            <button value="BLACK" className="button-player option" onClick={this.handleClick}>
+              Black
             </button>
           </div>
 
