@@ -46,35 +46,72 @@ class Deck extends React.Component {
 
       // Logic for second question
     } else if (this.state.secondQuestionGuessed == false) {
-      if (this.state.firstCard.cardValue > this.state.secondCard.cardValue && buttonValue == "HIGHER") {
-        // win condition
-        console.log("win")
+      if (this.state.firstCard.cardValue > this.state.secondCard.cardValue && buttonValue == "LOWER") {
+        console.log("You win!")
         this.setState({
           secondQuestionGuessed: true
         })
-      } else if (this.state.firstCard.cardValue < this.state.secondCard.cardValue && buttonValue == "LOWER") {
-        // win condition
-        console.log("win")
+      } else if (this.state.firstCard.cardValue < this.state.secondCard.cardValue && buttonValue == "HIGHER") {
+        console.log("You win!")
         this.setState({
           secondQuestionGuessed: true
         })
       } else if (this.state.firstCard.cardValue == this.state.secondCard.cardValue) {
-        // win condition for now
-        console.log("Win")
+        console.log("You win!")
         this.setState({
           secondQuestionGuessed: true
         })
       } else {
-        // lose condition
-        console.log("Second guessed incorrectly")
-        // display drinky emoji, reset board maybe???
+        console.log("Second guessed incorrectly, DRINK")
       }
 
     } else if (this.state.thirdQuestionGuessed == false) {
-      // Do the logic for third question here
+      let lowCard
+      let highCard
+      let thirdCardValue = this.state.thirdCard.cardValue
+
+      if (this.state.firstCard.cardValue < this.state.secondCard.cardValue) {
+        lowCard = this.state.firstCard.cardValue
+        highCard = this.state.secondCard.cardValue
+      } else if (this.state.firstCard.cardValue > this.state.secondCard.cardValue) {
+        lowCard = this.state.secondCard.cardValue
+        highCard = this.state.firstCard.cardValue
+      } else {
+        lowCard = this.state.firstCard.cardValue
+        highCard = this.state.secondCard.cardValue
+      }
+
+      if (thirdCardValue == lowCard || thirdCardValue == highCard) {
+        if (buttonValue == "INSIDE") {
+          console.log("Congrats, you win!")
+          this.setState({
+            thirdQuestionGuessed: true
+          })
+        } else if (buttonValue == "OUTSIDE") {
+          console.log("YOU LOSE! DRINK")
+        }
+      } else if (thirdCardValue < lowCard || thirdCardValue > highCard) {
+        if (buttonValue == "OUTSIDE") {
+          console.log("Congrats, you win!")
+          this.setState({
+            thirdQuestionGuessed: true
+          })
+        } else if (buttonValue == "INSIDE") {
+          console.log("u lose")
+        }
+      } else if (thirdCardValue > lowCard && thirdCardValue < highCard) {
+        if (buttonValue == "INSIDE") {
+          console.log("Congrats, you win!")
+          this.setState({
+            thirdQuestionGuessed: true
+          })
+        } else if (buttonValue == "OUTSIDE") {
+          console.log("u lose")
+        }
+      }
     }
   }
-  
+
   getColours(cardObject) {
     const suit = cardObject.suit
 
@@ -183,7 +220,7 @@ class Deck extends React.Component {
 
           {/* Red or black options */}
           <div className="container">
-            <button value ="RED" className="button-player options" onClick={this.handleClick}>
+            <button value="RED" className="button-player options" onClick={this.handleClick}>
               Red
             </button>
 
@@ -209,17 +246,21 @@ class Deck extends React.Component {
             </button>
           </div>
 
-            {/* Inside or Outside options */}
-            <div className="container">
-            <button className="button-player options" onClick={this.handleClick}>
+          {/* Inside or Outside options */}
+          <div className="container">
+            <button value="INSIDE" className="button-player options" onClick={this.handleClick}>
               Inside
             </button>
 
             <p>or</p>
 
-            <button className="button-player options" onClick={this.handleClick}>
+            <button value="OUTSIDE" className="button-player options" onClick={this.handleClick}>
               Outside
             </button>
+          </div>
+
+          <div className="container">
+            <button value="RESET" className="button-player options" onClick={this.getDeck}>Reset</button>
           </div>
         </div>
       </>
