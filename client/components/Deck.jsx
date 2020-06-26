@@ -50,34 +50,31 @@ class Deck extends React.Component {
     }
   }
 
-  getColours(cardObject) {
-
-    const suit = cardObject.suit
-
-    switch (suit) {
-
-      case "SPADES":
-        return "BLACK"
-
-
-      case "CLUBS":
-        return "BLACK"
-
-      case "HEARTS":
-        return "RED"
-
-      case "DIAMONDS":
-        return "RED"
-
-
+    if(this.state.firstQuestionGuessed == false){
+      this.setState({
+        firstQuestionGuessed : true
+      })
     }
+    console.log(event.target.value);
+ }
 
+ getColours(cardObject){
+  const suit = cardObject.suit
 
+  switch (suit){
+    case "SPADES":
+    return "BLACK"
+      
+    case "CLUBS":
+    return "BLACK"
 
+    case "HEARTS":
+      return "RED"
 
-
-  }
-
+    case "DIAMONDS":
+      return "RED"
+  } 
+ }
 
   // Function will get a new deck from external API and replace deck object in state
   getDeck = () => {
@@ -109,14 +106,10 @@ class Deck extends React.Component {
           secondCard: res.body.cards[1],
           thirdCard: res.body.cards[2],
         }, () => {
-
           this.state.firstCard.colour = this.getColours(this.state.firstCard)
           this.state.secondCard.colour = this.getColours(this.state.secondCard)
           this.state.thirdCard.colour = this.getColours(this.state.thirdCard)
-
-
-        })
-
+        })   
       })
   }
 
@@ -131,21 +124,18 @@ class Deck extends React.Component {
       <>
         <div className="container">
           <Card
-
             cardId="1"
             cardObject={this.state.firstCard}
             // onClick={this.handleClick}
             firstCardVisible={this.state.firstCardVisible}
           />
           <Card
-
             cardId="2"
             cardObject={this.state.secondCard}
             // onClick={this.handleClick}
             secondCardVisible={this.state.secondCardVisible}
           />
           <Card
-
             cardId="3"
             cardObject={this.state.thirdCard}
             // onClick={this.handleClick}
@@ -158,12 +148,10 @@ class Deck extends React.Component {
 
           {/* Red or black options */}
           <div className="container">
-            <button value="RED"
-              className="button-player options"
-              onClick={this.handleClick}
-            >
+            <button value ="RED" className="button-player options" onClick={this.handleClick}>
               Red
             </button>
+
             <p>or</p>
 
             <button value="BLACK" className="button-player option" onClick={this.handleClick}>
@@ -171,34 +159,31 @@ class Deck extends React.Component {
             </button>
           </div>
 
-          {/* Higher or Lower options */}
-          <div className="container">
-            <button
-              className="button-player options"
-              onClick={this.handleClick}
-            >
+            {/* Higher or Lower options */}
+            <div className="container">
+            <button className="button-player options" onClick={this.handleClick}>
               Higher
             </button>
+
             <p>or</p>
+
             <button className="button-player options" onClick={this.handleClick}>
               Lower
             </button>
           </div>
 
-          {/* Inside or Outside options */}
-          <div className="container">
-            <button
-              className="button-player options"
-              onClick={this.handleClick}
-            >
+            {/* Inside or Outside options */}
+            <div className="container">
+            <button className="button-player options" onClick={this.handleClick}>
               Inside
             </button>
+
             <p>or</p>
+
             <button className="button-player options" onClick={this.handleClick}>
               Outside
             </button>
           </div>
-
         </div>
       </>
     )
