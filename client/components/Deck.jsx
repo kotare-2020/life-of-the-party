@@ -15,9 +15,9 @@ class Deck extends React.Component {
     secondQuestionGuessed: false,
     thirdQuestionGuessed: false,
 
-    firstCardVisible: false,
-    secondCardVisible: false,
-    thirdCardVisible: false,
+    // firstCardVisible: false,
+    // secondCardVisible: false,
+    // thirdCardVisible: false,
   }
 
   componentDidMount() {
@@ -30,14 +30,14 @@ class Deck extends React.Component {
     let cardColour = this.state.firstCard.colour
 
     if (this.state.firstQuestionGuessed == false) {
+      this.setState({
+        firstQuestionGuessed: true,
+      })
       // Flip the card
       if (buttonValue == cardColour) {
         //Win condition
         // Display thumbs up emoji
         console.log("First guessed correctly")
-        this.setState({
-          firstQuestionGuessed: true
-        })
       } else {
         // Lose condition
         console.log("First guessed incorrectly")
@@ -54,17 +54,16 @@ class Deck extends React.Component {
       } else if (this.state.firstCard.cardValue < this.state.secondCard.cardValue && buttonValue == "HIGHER") {
         console.log("You win!")
         this.setState({
-          secondQuestionGuessed: true
+          secondQuestionGuessed: true,
         })
       } else if (this.state.firstCard.cardValue == this.state.secondCard.cardValue) {
         console.log("You win!")
         this.setState({
-          secondQuestionGuessed: true
+          secondQuestionGuessed: true,
         })
       } else {
         console.log("Second guessed incorrectly, DRINK")
       }
-
     } else if (this.state.thirdQuestionGuessed == false) {
       let lowCard
       let highCard
@@ -134,7 +133,7 @@ class Deck extends React.Component {
     const cardValue = cardObject.value
     const numberArr = ["2", "3", "4", "5", "6", "7", "8", "9", "10"]
 
-    if (cardValue == numberArr.find(element => element == cardValue)) {
+    if (cardValue == numberArr.find((element) => element == cardValue)) {
       return Number(cardValue)
     } else {
       switch (cardValue) {
@@ -175,19 +174,30 @@ class Deck extends React.Component {
     request
       .get(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=3`)
       .then((res) => {
-        this.setState({
-          firstCard: res.body.cards[0],
-          secondCard: res.body.cards[1],
-          thirdCard: res.body.cards[2],
-        }, () => {
-          this.state.firstCard.colour = this.getColours(this.state.firstCard)
-          this.state.secondCard.colour = this.getColours(this.state.secondCard)
-          this.state.thirdCard.colour = this.getColours(this.state.thirdCard)
+        this.setState(
+          {
+            firstCard: res.body.cards[0],
+            secondCard: res.body.cards[1],
+            thirdCard: res.body.cards[2],
+          },
+          () => {
+            this.state.firstCard.colour = this.getColours(this.state.firstCard)
+            this.state.secondCard.colour = this.getColours(
+              this.state.secondCard
+            )
+            this.state.thirdCard.colour = this.getColours(this.state.thirdCard)
 
-          this.state.firstCard.cardValue = this.translateCardValues(this.state.firstCard)
-          this.state.secondCard.cardValue = this.translateCardValues(this.state.secondCard)
-          this.state.thirdCard.cardValue = this.translateCardValues(this.state.thirdCard)
-        })
+            this.state.firstCard.cardValue = this.translateCardValues(
+              this.state.firstCard
+            )
+            this.state.secondCard.cardValue = this.translateCardValues(
+              this.state.secondCard
+            )
+            this.state.thirdCard.cardValue = this.translateCardValues(
+              this.state.thirdCard
+            )
+          }
+        )
       })
   }
 
@@ -203,15 +213,15 @@ class Deck extends React.Component {
         <div className="container">
           <Card
             cardObject={this.state.firstCard}
-            firstCardVisible={this.state.firstCardVisible}
+            cardVisible={this.state.firstQuestionGuessed}
           />
           <Card
             cardObject={this.state.secondCard}
-            secondCardVisible={this.state.secondCardVisible}
+            cardVisible={this.state.secondQuestionGuessed}
           />
           <Card
             cardObject={this.state.thirdCard}
-            thirdCardVisible={this.state.thirdCardVisible}
+            cardVisible={this.state.thirdQuestionGuessed}
           />
         </div>
 
@@ -219,47 +229,76 @@ class Deck extends React.Component {
           <h3>Choose!</h3>
 
           {/* Red or black options */}
-          <div className="container">
-            <button value="RED" className="button-player options" onClick={this.handleClick}>
-              Red
-            </button>
+          {!this.state.firstQuestionGuessed && (
+            <div className="container container-cards">
+              <button
+                value="RED"
+                className="button-player options"
+                onClick={this.handleClick}
+              >
+                Red
+              </button>
 
-            <p>or</p>
+              <p>or</p>
 
-            <button value="BLACK" className="button-player option" onClick={this.handleClick}>
-              Black
-            </button>
-          </div>
+              <button
+                value="BLACK"
+                className="button-player options"
+                onClick={this.handleClick}
+              >
+                Black
+              </button>
+            </div>
+          )}
+      
+    {/* Higher or Lower options */}
 
-          {/* Higher or Lower options */}
-          <div className="container">
-            <button value="HIGHER"
-              className="button-player options"
-              onClick={this.handleClick}
-            >
-              Higher
-            </button>
+          {this.state.firstQuestionGuessed &&
+            !this.state.secondQuestionGuessed && (
+              <div className="container container-cards">
+                <button
+                  value="HIGHER"
+                  className="button-player options"
+                  onClick={this.handleClick}
+                >
+                  Higher
+                </button>
 
-            <p>or</p>
-            <button value="LOWER" className="button-player options" onClick={this.handleClick}>
-              Lower
-            </button>
-          </div>
+                <p>or</p>
+                <button
+                  value="LOWER"
+                  className="button-player options"
+                  onClick={this.handleClick}
+                >
+                  Lower
+                </button>
+              </div>
+            )}
 
           {/* Inside or Outside options */}
-          <div className="container">
-            <button value="INSIDE" className="button-player options" onClick={this.handleClick}>
-              Inside
-            </button>
+          {this.state.secondQuestionGuessed &&
+            !this.state.thirdQuestionGuessed && (
+              <div className="container container-cards">
+                <button
+                  value="INSIDE"
+                  className="button-player options"
+                  onClick={this.handleClick}
+                >
+                  Inside
+                </button>
 
-            <p>or</p>
+                <p>or</p>
 
-            <button value="OUTSIDE" className="button-player options" onClick={this.handleClick}>
-              Outside
-            </button>
-          </div>
-
-          <div className="container">
+                <button
+                  value="OUTSIDE"
+                  className="button-player options"
+                  onClick={this.handleClick}
+                >
+                  Outside
+                </button>
+              </div>
+            )}
+          <div className="container container-cards">
             <button value="RESET" className="button-player options" onClick={this.getDeck}>Reset</button>
           </div>
         </div>
