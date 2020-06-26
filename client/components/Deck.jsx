@@ -43,38 +43,75 @@ class Deck extends React.Component {
         console.log("First guessed incorrectly")
         // Set firstQuestionGuessed to false, display drink emoji
       }
+
+      // Logic for second question
     } else if (this.state.secondQuestionGuessed == false) {
-      // Do the logic for second question here
+      if (this.state.firstCard.cardValue > this.state.secondCard.cardValue && buttonValue == "HIGHER") {
+        // win condition
+        console.log("win")
+        this.setState({
+          secondQuestionGuessed: true
+        })
+      } else if (this.state.firstCard.cardValue < this.state.secondCard.cardValue && buttonValue == "LOWER") {
+        // win condition
+        console.log("win")
+        this.setState({
+          secondQuestionGuessed: true
+        })
+      } else if (this.state.firstCard.cardValue == this.state.secondCard.cardValue) {
+        // win condition for now
+        console.log("Win")
+        this.setState({
+          secondQuestionGuessed: true
+        })
+      } else {
+        // lose condition
+        console.log("Second guessed incorrectly")
+        // display drinky emoji, reset board maybe???
+      }
+
     } else if (this.state.thirdQuestionGuessed == false) {
       // Do the logic for third question here
     }
   }
+  
+  getColours(cardObject) {
+    const suit = cardObject.suit
 
-    if(this.state.firstQuestionGuessed == false){
-      this.setState({
-        firstQuestionGuessed : true
-      })
+    switch (suit) {
+      case "SPADES":
+        return "BLACK"
+
+      case "CLUBS":
+        return "BLACK"
+
+      case "HEARTS":
+        return "RED"
+
+      case "DIAMONDS":
+        return "RED"
     }
-    console.log(event.target.value);
- }
+  }
 
- getColours(cardObject){
-  const suit = cardObject.suit
+  translateCardValues(cardObject) {
+    const cardValue = cardObject.value
+    const numberArr = ["2", "3", "4", "5", "6", "7", "8", "9", "10"]
 
-  switch (suit){
-    case "SPADES":
-    return "BLACK"
-      
-    case "CLUBS":
-    return "BLACK"
-
-    case "HEARTS":
-      return "RED"
-
-    case "DIAMONDS":
-      return "RED"
-  } 
- }
+    if (cardValue == numberArr.find(element => element == cardValue)) {
+      return Number(cardValue)
+    } else {
+      switch (cardValue) {
+        case "JACK":
+          return 11
+        case "QUEEN":
+          return 12
+        case "KING":
+          return 13
+        case "ACE":
+          return 14
+      }
+    }
+  }
 
   // Function will get a new deck from external API and replace deck object in state
   getDeck = () => {
@@ -109,7 +146,11 @@ class Deck extends React.Component {
           this.state.firstCard.colour = this.getColours(this.state.firstCard)
           this.state.secondCard.colour = this.getColours(this.state.secondCard)
           this.state.thirdCard.colour = this.getColours(this.state.thirdCard)
-        })   
+
+          this.state.firstCard.cardValue = this.translateCardValues(this.state.firstCard)
+          this.state.secondCard.cardValue = this.translateCardValues(this.state.secondCard)
+          this.state.thirdCard.cardValue = this.translateCardValues(this.state.thirdCard)
+        })
       })
   }
 
@@ -124,21 +165,15 @@ class Deck extends React.Component {
       <>
         <div className="container">
           <Card
-            cardId="1"
             cardObject={this.state.firstCard}
-            // onClick={this.handleClick}
             firstCardVisible={this.state.firstCardVisible}
           />
           <Card
-            cardId="2"
             cardObject={this.state.secondCard}
-            // onClick={this.handleClick}
             secondCardVisible={this.state.secondCardVisible}
           />
           <Card
-            cardId="3"
             cardObject={this.state.thirdCard}
-            // onClick={this.handleClick}
             thirdCardVisible={this.state.thirdCardVisible}
           />
         </div>
@@ -159,15 +194,17 @@ class Deck extends React.Component {
             </button>
           </div>
 
-            {/* Higher or Lower options */}
-            <div className="container">
-            <button className="button-player options" onClick={this.handleClick}>
+          {/* Higher or Lower options */}
+          <div className="container">
+            <button value="HIGHER"
+              className="button-player options"
+              onClick={this.handleClick}
+            >
               Higher
             </button>
 
             <p>or</p>
-
-            <button className="button-player options" onClick={this.handleClick}>
+            <button value="LOWER" className="button-player options" onClick={this.handleClick}>
               Lower
             </button>
           </div>
