@@ -74,7 +74,7 @@ class Deck extends React.Component {
       // Do the logic for third question here
     }
   }
-
+  
   getColours(cardObject) {
     const suit = cardObject.suit
 
@@ -112,7 +112,6 @@ class Deck extends React.Component {
       }
     }
   }
-
 
   // Function will get a new deck from external API and replace deck object in state
   getDeck = () => {
@@ -184,12 +183,10 @@ class Deck extends React.Component {
 
           {/* Red or black options */}
           <div className="container">
-            <button value="RED"
-              className="button-player options"
-              onClick={this.handleClick}
-            >
+            <button value ="RED" className="button-player options" onClick={this.handleClick}>
               Red
             </button>
+
             <p>or</p>
 
             <button value="BLACK" className="button-player option" onClick={this.handleClick}>
@@ -205,26 +202,25 @@ class Deck extends React.Component {
             >
               Higher
             </button>
+
             <p>or</p>
             <button value="LOWER" className="button-player options" onClick={this.handleClick}>
               Lower
             </button>
           </div>
 
-          {/* Inside or Outside options */}
-          <div className="container">
-            <button
-              className="button-player options"
-              onClick={this.handleClick}
-            >
+            {/* Inside or Outside options */}
+            <div className="container">
+            <button className="button-player options" onClick={this.handleClick}>
               Inside
             </button>
+
             <p>or</p>
+
             <button className="button-player options" onClick={this.handleClick}>
               Outside
             </button>
           </div>
-
         </div>
       </>
     )

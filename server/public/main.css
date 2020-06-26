@@ -146,9 +146,9 @@ span {
   justify-content: space-evenly;
   align-content: center;
   background-color: #235f24;
-  height: auto;
+  height: 350px;
   width: 90%;
-  margin: 2% auto 2% auto;
+  margin: 2% auto 2% auto; 
   border-radius: 25px;
   line-height: 2em;
 }
@@ -156,6 +156,8 @@ span {
 .card {
   margin: 2% 0% 2% 0%;
   text-align: center;
+  width: 226px;
+  height: 314px;
 }
 
 /* Player Prompts */
@@ -187,7 +189,7 @@ span {
 .flip-card {
   background-color: transparent;
   width: 300px;
-  height: 300px;
+  height: 314px;
   perspective: 1000px;
 }
 
@@ -212,10 +214,13 @@ span {
   backface-visibility: hidden;
 }
 
-/* .flip-card-front {
-  color: black;
-} */
-
 .flip-card-back {
   transform: rotateY(180deg);
+}
+
+.card-back {
+  width: 380px;
+  height: auto;
+  margin-top: -30px;
+  margin-left: -35px;
 }
