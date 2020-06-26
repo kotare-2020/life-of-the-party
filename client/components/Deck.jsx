@@ -14,10 +14,6 @@ class Deck extends React.Component {
     firstQuestionGuessed: false,
     secondQuestionGuessed: false,
     thirdQuestionGuessed: false,
-
-    // firstCardVisible: false,
-    // secondCardVisible: false,
-    // thirdCardVisible: false,
   }
 
   componentDidMount() {
@@ -83,11 +79,14 @@ class Deck extends React.Component {
       if (thirdCardValue == lowCard || thirdCardValue == highCard) {
         if (buttonValue == "INSIDE") {
           console.log("Congrats, you win!")
+            this.setState({
+              thirdQuestionGuessed: true
+            })
+        } else if (buttonValue == "OUTSIDE") {
+          console.log("YOU LOSE! DRINK")
           this.setState({
             thirdQuestionGuessed: true
           })
-        } else if (buttonValue == "OUTSIDE") {
-          console.log("YOU LOSE! DRINK")
         }
       } else if (thirdCardValue < lowCard || thirdCardValue > highCard) {
         if (buttonValue == "OUTSIDE") {
@@ -96,7 +95,10 @@ class Deck extends React.Component {
             thirdQuestionGuessed: true
           })
         } else if (buttonValue == "INSIDE") {
-          console.log("u lose")
+          console.log("u lose, DRINK")
+          this.setState({
+            thirdQuestionGuessed: true
+          })
         }
       } else if (thirdCardValue > lowCard && thirdCardValue < highCard) {
         if (buttonValue == "INSIDE") {
@@ -105,7 +107,10 @@ class Deck extends React.Component {
             thirdQuestionGuessed: true
           })
         } else if (buttonValue == "OUTSIDE") {
-          console.log("u lose")
+          console.log("u lose, DRINK")
+          this.setState({
+            thirdQuestionGuessed: true
+          })
         }
       }
     }
@@ -207,6 +212,10 @@ class Deck extends React.Component {
     }
   }
 
+  refreshPage = () => {
+    location.reload()
+  }
+
   render() {
     return (
       <>
@@ -299,7 +308,7 @@ class Deck extends React.Component {
               </div>
             )}
           <div className="container container-cards">
-            <button value="RESET" className="button-player options" onClick={this.getDeck}>Reset</button>
+            <button value="RESET" className="button-player options" onClick={this.refreshPage}>Reset</button>
           </div>
         </div>
       </>
