@@ -2,20 +2,18 @@ import React from "react"
 import Deck from "./Deck"
 import { getPlayers } from "../api"
 
-let randomIndex = Math.floor(Math.random() * 14)
-
 class App extends React.Component {
   state = {
     players: [],
   }
 
-  handleClick = e => {
+  handleClick = (e) => {
     this.randomPlayer()
   }
 
   randomPlayer = () => {
     getPlayers().then((player) => {
-      console.log(player)
+      let randomIndex = Math.floor(Math.random() * 14)
       this.setState({
         players: player[randomIndex],
       })
@@ -39,30 +37,23 @@ class App extends React.Component {
         </header>
 
         <div className="forest-green player-container">
-          <button className="button-player" onClick={this.handleClick}>Player</button>
-        <p>
-          <em>{this.state.players.player}</em>
-        </p>
+
+          <button className="button-player sticky" onClick={this.handleClick}>
+            Player
+          </button>
+
+          <div className="text" >
+            <p>
+              <em>{this.state.players.player}</em>
+            </p>
+          </div>
+
         </div>
 
         <Deck />
-        
-        {/* <div className="forest-green player-prompts" >
-          <h3>Choose!</h3>
-          <p>Instructions go here</p>
-          <div className="container">
-          <button className="button-player options" onClick={this.handleClick}>Red</button>
-              <p>or</p>
-          <button className="button-player option" onClick={this.handleClick}>Black</button>
-
-          </div>
-
-        </div> */}
-
       </div>
     )
   }
 }
 
 export default App
-

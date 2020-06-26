@@ -83,6 +83,7 @@ class Deck extends React.Component {
             remainingCards: res.body.remaining,
           },
           () => {
+            //Currently this will draw 3 cards by default but we potentially wanna do something else
             this.draw3Cards()
           }
         )
@@ -112,26 +113,32 @@ class Deck extends React.Component {
       })
   }
 
+  checkForEmptyDeck = () => {
+    if (this.state.remainingCards < 3) {
+      this.getDeck()
+    }
+  }
+
   render() {
     return (
       <>
         <div className="container">
           <Card
-            className="card"
+            
             cardId="1"
             cardObject={this.state.firstCard}
             // onClick={this.handleClick}
             firstCardVisible={this.state.firstCardVisible}
           />
           <Card
-            className="card"
+            
             cardId="2"
             cardObject={this.state.secondCard}
             // onClick={this.handleClick}
             secondCardVisible={this.state.secondCardVisible}
           />
           <Card
-            className="card"
+            
             cardId="3"
             cardObject={this.state.thirdCard}
             // onClick={this.handleClick}
@@ -141,7 +148,8 @@ class Deck extends React.Component {
 
         <div className="forest-green player-prompts">
           <h3>Choose!</h3>
-          <p>Instructions go here</p>
+
+        {/* Red or black options */}
           <div className="container">
             <button value ="RED"
               className="button-player options"
@@ -150,10 +158,40 @@ class Deck extends React.Component {
               Red
             </button>
             <p>or</p>
+
             <button value = "BLACK" className="button-player option" onClick={this.handleClick}>
-              Black
+             Black
             </button>
           </div>
+
+            {/* Higher or Lower options */}
+            <div className="container">
+            <button
+              className="button-player options"
+              onClick={this.handleClick}
+            >
+              Higher
+            </button>
+            <p>or</p>
+            <button className="button-player options" onClick={this.handleClick}>
+              Lower
+            </button>
+          </div>
+
+            {/* Inside or Outside options */}
+            <div className="container">
+            <button
+              className="button-player options"
+              onClick={this.handleClick}
+            >
+              Inside
+            </button>
+            <p>or</p>
+            <button className="button-player options" onClick={this.handleClick}>
+              Outside
+            </button>
+          </div>
+
         </div>
       </>
     )
