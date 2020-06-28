@@ -33,32 +33,35 @@ class Deck extends React.Component {
       if (buttonValue == cardColour) {
         //Win condition
         // Display thumbs up emoji
-        console.log("First guessed correctly")
+        console.log("You got it!")
       } else {
         // Lose condition
-        console.log("First guessed incorrectly")
+        console.log("Incorrect, DRINK!")
         // Set firstQuestionGuessed to false, display drink emoji
       }
 
       // Logic for second question
     } else if (this.state.secondQuestionGuessed == false) {
       if (this.state.firstCard.cardValue > this.state.secondCard.cardValue && buttonValue == "LOWER") {
-        console.log("You win!")
+        console.log("You got it!")
         this.setState({
           secondQuestionGuessed: true
         })
       } else if (this.state.firstCard.cardValue < this.state.secondCard.cardValue && buttonValue == "HIGHER") {
-        console.log("You win!")
+        console.log("You got it!")
         this.setState({
           secondQuestionGuessed: true,
         })
       } else if (this.state.firstCard.cardValue == this.state.secondCard.cardValue) {
-        console.log("You win!")
+        console.log("You got it!")
         this.setState({
           secondQuestionGuessed: true,
         })
       } else {
         console.log("Second guessed incorrectly, DRINK")
+        this.setState({
+          secondQuestionGuessed: true,
+        })
       }
     } else if (this.state.thirdQuestionGuessed == false) {
       let lowCard
@@ -83,7 +86,7 @@ class Deck extends React.Component {
               thirdQuestionGuessed: true
             })
         } else if (buttonValue == "OUTSIDE") {
-          console.log("YOU LOSE! DRINK")
+          console.log("You lose, DRINK")
           this.setState({
             thirdQuestionGuessed: true
           })
@@ -95,7 +98,7 @@ class Deck extends React.Component {
             thirdQuestionGuessed: true
           })
         } else if (buttonValue == "INSIDE") {
-          console.log("u lose, DRINK")
+          console.log("You lose, DRINK")
           this.setState({
             thirdQuestionGuessed: true
           })
@@ -107,7 +110,7 @@ class Deck extends React.Component {
             thirdQuestionGuessed: true
           })
         } else if (buttonValue == "OUTSIDE") {
-          console.log("u lose, DRINK")
+          console.log("You lose, DRINK")
           this.setState({
             thirdQuestionGuessed: true
           })
@@ -235,6 +238,7 @@ class Deck extends React.Component {
         </div>
 
         <div className="forest-green player-prompts">
+
           <h3>Choose!</h3>
 
           {/* Red or black options */}

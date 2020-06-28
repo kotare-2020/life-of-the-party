@@ -21,11 +21,10 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log("component did mount")
+    console.log("")
   }
 
   render() {
-    console.log("render")
     return (
       <div>
         <header className="header">
